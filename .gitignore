@@ -1,0 +1,15 @@
+﻿# 환경 변수 파일
+.env
+
+# Firebase 설정 파일
+firebase-debug.log
+.firebase/
+firebase-debug.*.log
+
+# 노드 모듈
+node_modules/
+
+# 기타 민감한 정보
+*.key
+*.pem
+server.js

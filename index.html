@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Ethics Education Chatbot</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="alternate icon" type="image/x-icon" href="favicon.ico">
+    
+    <!-- Firebase SDK -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-analytics.js";
+        import { getFirestore } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyD6DjKDwMFcL4zGqd0oRJLOUR3uV_nwKrQ",
+            authDomain: "ethobot-en.firebaseapp.com",
+            projectId: "ethobot-en",
+            storageBucket: "ethobot-en.firebasestorage.app",
+            messagingSenderId: "769052364945",
+            appId: "1:769052364945:web:ed71ed3570c61ec050ef30",
+            measurementId: "G-H088VZE0RE"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+        const db = getFirestore(app);
+
+        window.db = db; // For global access
+    </script>
+
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:title" content="ETHOBOT - AI Ethics Education Assistant">
+    <meta property="og:description" content="Interactive educational assistant for exploring AI Ethics in education">
+    <meta property="og:image" content="https://educatian.github.io/ETHOBOT_ENG/img/logo.png">
+    <meta property="og:url" content="https://educatian.github.io/ETHOBOT_ENG/">
+    <meta name="twitter:card" content="summary_large_image">
+  </head>
+  <body>
+    <div class="sidebar">
+        <div class="logo-container">
+            <img src="robot-icon.png" alt="Ethobot">
+            <h1>Ethobot</h1>
+        </div>
+        <div class="logo-subtitle">AI Ethics Education Assistant</div>
+        
+        <div class="mode-section">
+            <h3>Select Mode</h3>
+            <div class="mode-buttons">
+                <button class="mode-btn active" data-mode="ethics">
+                    <span class="icon">📚</span>
+                    Ethics Education
+                </button>
+                <button class="mode-btn" data-mode="case">
+                    <span class="icon">🔍</span>
+                    Learning Design
+                </button>
+                <button class="mode-btn" data-mode="dilemma">
+                    <span class="icon">⚖️</span>
+                    Dilemma Discussion
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="chat-container">
+            <div class="chat-header">
+                <h2>AI Ethics Education Chatbot</h2>
+            </div>
+            <div class="chat-messages" id="chat-messages">
+                <!-- Messages will be added here -->
+            </div>
+            <div class="chat-input">
+                <input type="text" id="user-input" placeholder="Type your message...">
+                <button id="send-button">Send</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 애플리케이션 스크립트 -->
+    <script type="module" src="app.js"></script>
+  </body>
+</html>

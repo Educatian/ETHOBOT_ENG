@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>API 테스트</title>
+</head>
+<body>
+  <h1>API 테스트</h1>
+  <button id="testBtn">API 테스트</button>
+  <pre id="result"></pre>
+
+  <script>
+    document.getElementById('testBtn').addEventListener('click', async () => {
+      const resultEl = document.getElementById('result');
+      resultEl.textContent = '요청 중...';
+      
+      try {
+        const response = await fetch('http://localhost:3001/api/chat', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            model: "gpt-3.5-turbo",
+            messages: [
+              {
+                role: "system",
+                content: "당신은 도움이 되는 AI 비서입니다."
+              },
+              {
+                role: "user",
+                content: "안녕하세요"
+              }
+            ],
+            max_tokens: 100
+          })
+        });
+        
+        const data = await response.json();
+        resultEl.textContent = JSON.stringify(data, null, 2);
+      } catch (error) {
+        resultEl.textContent = '오류: ' + error.message;
+      }
+    });
+  </script>
+</body>
+</html> 
